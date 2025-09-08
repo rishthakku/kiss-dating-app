@@ -1,0 +1,295 @@
+/* === Base === */
+body {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(135deg, #ff4b8b, #ff7eb3, #ffdde1);
+  background-size: 300% 300%;
+  animation: gradientFlow 15s ease infinite;
+  color: #111;
+  line-height: 1.5;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+@keyframes gradientFlow {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+/* === Layout === */
+main {
+  flex: 1; /* take available height */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 30px 15px;
+  box-sizing: border-box;
+}
+.hidden { display: none; }
+
+/* === Header === */
+header {
+  background: #fff;
+  padding: 15px 30px;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+header h1 { margin: 0; font-size: 24px; font-weight: 600; }
+.header-link { color: #ff4b8b; text-decoration: none; font-weight: 500; }
+
+/* === Brand Hero === */
+.brand-hero {
+  text-align: center;
+  margin: 40px 0 30px;
+}
+.brand-title {
+  font-size: 64px;
+  font-weight: 800;
+  color: #fff;
+  text-shadow: 0 8px 24px rgba(0,0,0,0.25);
+  margin: 0;
+}
+.brand-tagline {
+  font-size: 18px;
+  font-weight: 400;
+  color: #ffe4ef;
+  margin-top: 8px;
+}
+.fade-in { animation: fadeIn 1.2s forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+/* === Forms === */
+.form-container {
+  background: rgba(255,255,255,0.95);
+  backdrop-filter: blur(15px);
+  border-radius: 20px;
+  box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+  padding: 40px;
+  width: 100%;
+  max-width: 400px;
+  margin: 20px auto;
+  text-align: center;
+}
+.form-container h1 {
+  font-size: 22px;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+.form-container input {
+  width: 100%;
+  padding: 14px;
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 12px;
+  font-size: 16px;
+  box-sizing: border-box;
+}
+.form-container input:focus {
+  border-color: #ff4b8b;
+  outline: none;
+}
+.form-container p { font-size: 14px; }
+.form-container a { color: #ff4b8b; }
+
+/* === Buttons === */
+button, .chat-button {
+  background: #ff4b8b;
+  color: #fff;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+button:hover, .chat-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(255, 75, 139, 0.3);
+}
+button:active, .chat-button:active { transform: scale(0.97); }
+.chat-button { text-decoration: none; display: inline-block; margin-top: 10px; }
+
+/* === User Grid === */
+.user-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 20px;
+  width: 100%;
+  max-width: 1000px;
+}
+.user-card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.user-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+}
+.user-card img {
+  width: 110px; height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 10px;
+}
+.user-card h2 { margin: 0; font-size: 18px; }
+
+/* === Profile === */
+.profile-container {
+  max-width: 600px;
+  margin: 20px auto;
+  background: #fff;
+  border-radius: 18px;
+  padding: 30px;
+  text-align: center;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+}
+.profile-container img {
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 15px;
+}
+.profile-container h1 { margin-bottom: 10px; }
+.profile-container p {
+  font-size: 16px;
+  color: #555;
+  margin-bottom: 20px;
+}
+
+/* === Chat === */
+.chat-container {
+  max-width: 800px;
+  height: calc(100vh - 150px);
+  margin: 0 auto;
+  background: #fff;
+  border-radius: 18px;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+}
+.message-history {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+}
+.message {
+  padding: 10px 14px;
+  border-radius: 18px;
+  margin-bottom: 10px;
+  max-width: 70%;
+  line-break: anywhere;
+  font-size: 15px;
+}
+.sent {
+  background: #ff4b8b;
+  color: #fff;
+  align-self: flex-end;
+}
+.received {
+  background: #f1f0f0;
+  align-self: flex-start;
+}
+.chat-form {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid #eee;
+}
+.chat-form input {
+  flex: 1;
+  border: 1px solid #ddd;
+  border-radius: 18px;
+  padding: 10px 14px;
+  font-size: 15px;
+}
+.chat-form button {
+  margin-left: 10px;
+  padding: 10px 18px;
+}
+
+.interests-preview, .interests {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    margin: 8px 0;
+}
+.interest {
+    background: #e5e5ea;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 12px;
+}
+.prompts blockquote {
+    text-align: left;
+    font-style: italic;
+    margin: 10px 0;
+    padding: 10px;
+    background: #f2f2f7;
+    border-radius: 8px;
+    border-left: 3px solid #007aff;
+}
+.user-card p {
+    font-size: 14px;
+    color: #65676b;
+    margin: 8px 0;
+}
+/* Remove underlines from all links in the app (SFW, Apple-like clean look) */
+.user-card a,
+.user-card a *,
+.profile-container a,
+.profile-container a *,
+.chat-button,
+.header-link {
+    text-decoration: none !important; /* !important to override defaults */
+    color: inherit; /* Keeps text color consistent (e.g., black/gray) */
+}
+
+.user-card a:hover,
+.profile-container a:hover,
+.chat-button:hover,
+.header-link:hover {
+    opacity: 0.8; /* Subtle feedback instead of underline */
+    text-decoration: none; /* Ensure no underline on hover */
+}
+
+/* Specific fixes for bio, name, and interests (prevents inheritance) */
+.user-card h2,
+.user-card p,
+.user-card .interests-preview,
+.profile-container h1,
+.profile-container p,
+.profile-container .interests,
+.profile-container .prompts,
+.interest,
+.prompts blockquote {
+    text-decoration: none !important;
+    border-bottom: none; /* Just in case any border-bottom is mimicking underline */
+}
+
+/* Global text polish (no underlines anywhere) */
+body {
+    text-decoration: none; /* Base override */
+}
+
+a {
+    text-decoration: none; /* All links */
+}
+
+a:hover, a:focus {
+    text-decoration: none; /* Hover/focus too */
+    outline: none; /* Removes focus underline/ring for clean look */
+}
